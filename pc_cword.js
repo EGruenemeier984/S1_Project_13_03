@@ -7,8 +7,8 @@
 
    Crossword Puzzle Script
    
-   Author: 
-   Date:   
+   Author: Ethan Gruenemeier
+   Date:  3.14.19 
    
    Global Variables
    ================
@@ -48,12 +48,36 @@
 
 
 */
+var allLetters;
+var currentLetter;
+var wordLetters;
+var acrossClue;
+var downClue;
+var typeDirection = "right";
+
+window.onload = init();
+
+function init() {
+    allLetters = document.querySelectorAll("table#crossword span");
+    currentLetter = allLetters[0];
+    var acrossID = currentLetter.getAttribute("data-clue-a");
+    var downID = currentLetter.getAttribute("data-clue-d");
+    acrossClue = document.getElementById("acrossID");
+    downClue = document.getElementById("downID");
+}
+
+function formatPuzzle(puzzleLetter) {
+    currentLetter = puzzleLetter;
+    for (var i = 0; i < allLetters.length; i++) {
+        allLetters[i].style.backgroundColor = "";
+    }
+    acrossClue.style.color = "";
+    downClue.style.color = "";
+}
 
 
 
 
-
-   
 
 
 
@@ -62,5 +86,5 @@
 /*====================================================*/
 
 function getChar(keyNum) {
-   return String.fromCharCode(keyNum);
+    return String.fromCharCode(keyNum);
 }
